@@ -15,20 +15,20 @@ class NYTHttpTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->url = config('app.nyt.url');
-        $this->key = config('app.nyt.key');
+        $this->url = config('services.nyt.url');
+        $this->key = config('services.nyt.key');
     }
 
     public function test_url_variable_not_set_and_url_not_passed(): void
     {
-        $this->app['config']->set('app.nyt.url', null);
+        $this->app['config']->set('services.nyt.url', null);
         $this->expectException(HttpResponseException::class);
         new NYTHttp();
     }
 
     public function test_url_variables_not_set_url_and_passed(): void
     {
-        $this->app['config']->set('app.nyt.url', null);
+        $this->app['config']->set('services.nyt.url', null);
         try {
             new NYTHttp($this->url);
         } catch (\Exception $e) {
@@ -39,14 +39,14 @@ class NYTHttpTest extends TestCase
 
     public function test_api_variable_not_set(): void
     {
-        $this->app['config']->set('app.nyt.key', null);
+        $this->app['config']->set('services.nyt.key', null);
         $this->expectException(HttpResponseException::class);
         new NYTHttp();
     }
 
     protected function tearDown(): void
     {
-        $this->app['config']->set('app.nyt.url', $this->url);
-        $this->app['config']->set('app.nyt.key', $this->key);
+        $this->app['config']->set('services.nyt.url', $this->url);
+        $this->app['config']->set('services.nyt.key', $this->key);
     }
 }

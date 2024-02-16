@@ -78,7 +78,7 @@ class NYTGetRequestTest extends TestCase
     {
 
         Http::fake([
-            config('app.nyt.url') . "?*" => Http::response(
+            config('services.nyt.url') . "?*" => Http::response(
                 self::NYT_200_RESPONSE,
                 200,
                 ['Content-Type: application/json']
@@ -186,7 +186,7 @@ class NYTGetRequestTest extends TestCase
     public function test_503_fail()
     {
         Http::fake([
-            config('app.nyt.url') . "?*" => Http::response(
+            config('services.nyt.url') . "?*" => Http::response(
                 json_encode("Error"),
                 500,
                 ['Content-Type: application/json']
@@ -202,7 +202,7 @@ class NYTGetRequestTest extends TestCase
     {
         $msg = "Validation fail";
         Http::fake([
-            config('app.nyt.url') . "?*" => Http::response(
+            config('services.nyt.url') . "?*" => Http::response(
                 json_encode($msg),
                 422,
                 ['Content-Type: application/json']

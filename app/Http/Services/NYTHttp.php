@@ -11,18 +11,18 @@ class NYTHttp implements SimpleHttpInterface
     private string $url;
     public function __construct(?string $url = null, private array $query = [])
     {
-        if (is_null(config('app.nyt.key'))) {
+        if (is_null(config('services.nyt.key'))) {
             $this->throw();
         }
         if (is_null($url)) {
-            if (is_null(config('app.nyt.url'))) {
+            if (is_null(config('services.nyt.url'))) {
                 $this->throw();
             }
-            $this->url = config('app.nyt.url');
+            $this->url = config('services.nyt.url');
         }
 
         $this->query = [
-            "api-key" => config('app.nyt.key'),
+            "api-key" => config('services.nyt.key'),
         ];
     }
 
