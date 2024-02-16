@@ -31,4 +31,15 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'nyt' => [
+        'url' => env('NYT_URL'),
+        'key' => env('NYT_API_KEY'),
+    ],
+
+    'messages' => [
+        'unavailable' => 'The service is currently unavailable',
+        'no_config' => 'Service configuration not found.'
+    ]
+
+
 ];
